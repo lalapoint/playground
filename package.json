@@ -1,5 +1,5 @@
 {
-  "name": "lalamoxi",
+  "name": "lalaplayground",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,15 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "tailwindcss": "^1.1.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.2",
     "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -27,9 +30,14 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": 0,
+      "max-len": 0,
+      "no-unused-vars" : 0
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
