@@ -45,7 +45,7 @@
       </div>
 
       <div class="h-full flex flex-col items-center justify-center font-bold text-red-600" v-else>
-        <div v-if="!settings.env.length">Select Enviroment</div>
+        <div v-if="!settings.env.length">Select Environment</div>
         <div v-if="!settings.token">Enter API Token</div>
         <div v-if="settings.token && !settings.validToken">Invalid API Token</div>
       </div>
@@ -174,7 +174,7 @@ export default {
     },
     async call(endpoint, params) {
       if (!this.settings.env) {
-        this.log('Please select enviroment');
+        this.log('Please select environment');
         return {};
       }
 

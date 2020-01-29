@@ -12,7 +12,7 @@
     <div class="mb-4">
       <select v-model="value.env" class="form-select w-full">
         <option disabled value="">Select Environment</option>
-        <option v-for="opt in enviroments" :key="opt.name" :value="opt.url">{{opt.name}}</option>
+        <option v-for="opt in environments" :key="opt.name" :value="opt.url">{{opt.name}}</option>
       </select>
     </div>
 
@@ -53,7 +53,7 @@ export default {
   },
 
   data: () => ({
-    enviroments: [
+    environments: [
       process.env.NODE_ENV !== 'production' ? { name: 'Local', url: 'http://jasper.test' } : false,
       { name: 'Staging', url: 'https://jasper.lalapoint.com' },
       { name: 'Production', url: 'https://lalapoint.com' },

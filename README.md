@@ -1,5 +1,7 @@
 # Lala API Playground
 
+[Check it out here.](https://lalapoint-api-playground.netlify.com/)
+
 ## Project setup
 ```
 npm install
