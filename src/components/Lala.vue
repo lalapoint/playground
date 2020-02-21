@@ -38,7 +38,7 @@
           :items="stories">
             <div
               slot-scope="each"
-              @click="log(each.item)">
+              @click="getStory(each.item)">
                 {{each.item.level}} - {{each.item.geo.name}} - {{each.item.type}} ({{each.item.price_range.name}})
             </div>
         </ListItems>
@@ -145,32 +145,38 @@ export default {
       this.getStories();
     },
 
+    async getStory(story) {
+      const res = await this.call(`stories/${story.uuid}`);
+
+      this.log(res.data);
+    },
+
     async getStories() {
-      const stories = await this.call('stories', {
+      const res = await this.call('stories', {
         'filter[county]': this.selected.county,
         'filter[state]': this.selected.state,
         top_stories: this.settings.topStories ? 1 : 0,
         per_page: 9999,
       });
 
-      if (stories.data.length === 0) {
+      if (res.data.length === 0) {
         this.log('No stories found.');
       }
 
-      this.stories = stories.data;
+      this.stories = res.data;
     },
     async getCounties() {
-      const counties = await this.call('geos/counties', {
+      const res = await this.call('geos/counties', {
         'filter[state]': this.selected.state,
         has_stories: this.settings.hasStories ? 1 : 0,
       });
-      this.counties = counties.data;
+      this.counties = res.data;
     },
     async getStates() {
-      const states = await this.call('geos/states', {
+      const res = await this.call('geos/states', {
         has_stories: this.settings.hasStories ? 1 : 0,
       });
-      this.states = states.data;
+      this.states = res.data;
     },
     async call(endpoint, params) {
       if (!this.settings.env) {
